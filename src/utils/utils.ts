@@ -4,9 +4,13 @@ import { words } from "./words";
  * Returns a random word from the word list.
  * @returns {string} A random word from the word list.
  */
-export function getRandomWord(): string {
-  const randomIndex = Math.floor(Math.random() * words.length);
-  return words[randomIndex];
+export function getRandomWord(length: number): string {
+  const filteredWords = words.filter((word) => word.length === length);
+
+  if (filteredWords.length === 0) {
+    return words[Math.floor(Math.random() * words.length)];
+  }
+  return filteredWords[Math.floor(Math.random() * filteredWords.length)];
 }
 
 /**

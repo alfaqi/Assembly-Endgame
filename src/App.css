@@ -179,3 +179,26 @@ button.new-game {
   white-space: nowrap;
   border: 0;
 }
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
