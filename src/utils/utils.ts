@@ -1,16 +1,26 @@
-import { words } from "./words";
+import { colorWords, genericWords } from "./words";
 
 /**
  * Returns a random word from the word list.
  * @returns {string} A random word from the word list.
  */
-export function getRandomWord(length: number): string {
+export function getRandomWord(length: number, category: string): string {
+  const words = category === "Colors" ? colorWords : genericWords;
+
   const filteredWords = words.filter((word) => word.length === length);
 
   if (filteredWords.length === 0) {
     return words[Math.floor(Math.random() * words.length)];
   }
   return filteredWords[Math.floor(Math.random() * filteredWords.length)];
+}
+
+export function getMinLength(category: string): number {
+  const words = category === "Colors" ? colorWords : genericWords;
+
+  if (words.length === 0) return 0;
+
+  return Math.min(...words.map((word) => word.length));
 }
 
 /**

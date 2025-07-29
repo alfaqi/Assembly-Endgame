@@ -6,26 +6,30 @@ import StartGame from "./components/StartGame";
 
 export default function App() {
   const [length, setLength] = useState(0);
-  const [startNewGame, setStartNewGame] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Colors");
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
   function onBack() {
-    setStartNewGame(false);
+    setIsGameStarted(false);
   }
 
   return (
     <main>
       <Header />
-      {startNewGame ? (
+      {isGameStarted ? (
         <AssemblyEndgame
           length={length}
-          setStartNewGame={setStartNewGame}
+          setIsGameStarted={setIsGameStarted}
           onBack={onBack}
+          category={selectedCategory}
         />
       ) : (
         <StartGame
           length={length}
           setLength={setLength}
-          setStartNewGame={setStartNewGame}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          onStart={() => setIsGameStarted(true)}
         />
       )}
     </main>

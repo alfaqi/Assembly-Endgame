@@ -8,7 +8,7 @@ import { getFarewellText, getRandomWord } from "../utils/utils";
 export default function AssemblyEndgame(props: any) {
   // State values
   const [currentWord, setCurrentWord] = useState(() =>
-    getRandomWord(props.length)
+    getRandomWord(props.length, props.category)
   );
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
@@ -33,8 +33,8 @@ export default function AssemblyEndgame(props: any) {
   }
 
   function startNewGame() {
-    props.setStartNewGame(false);
-    setCurrentWord(getRandomWord(props.length));
+    props.setIsGameStarted(false);
+    setCurrentWord(getRandomWord(props.length, props.category));
     setGuessedLetters([]);
   }
 
@@ -124,7 +124,7 @@ export default function AssemblyEndgame(props: any) {
 
   return (
     <main>
-      {isGameWon && <Confetti recycle={false} numberOfPieces={1000} />}
+      {isGameWon && <Confetti />}
 
       <section aria-live="polite" role="status" className={gameStatusClass}>
         {renderGameStatus()}
